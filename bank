@@ -1,0 +1,57 @@
+class Account:
+    __balance = 0
+
+    def __init__(self,balance):
+       # __balance = balance
+         pass
+    def getBalance(self):
+        #__balance += 1
+        __balance += balance
+    def deposit(self,amount):
+        if amount > 0:
+            print(True)
+        else:
+           print(False)
+
+    def withdraw(self,money):
+        if money > amount:
+            print(False)
+        else:
+            print(True)
+class Customer:
+    __Fname = ""
+    __Lname = ""
+    __acct = ""
+
+    def __init__(self,firstname,lastname,acct):
+        __Fname = firstname
+        __Lname = lastname
+        __acct = acct
+
+    def getname(self):
+        return __Fname + (" ")  + __Lname
+
+    def getaccount(self):
+        return Account
+
+
+class bank:
+    __Customers = []
+    __numberOfCustomer = 0
+    __bankName = "uba bank Nig plc"
+    def __init__(self,__Customers,__numberOfCustomer, __bankName):
+        self.__bankname = __bankName
+        self.__numberOfCustomer = __numberOfCustomer
+
+    def bankname(self,bname):
+         __bankName = bname
+
+    def getNumOfCustomer(self):
+        return __numberOfCustomer
+
+    def getCustomers(self,name):
+        return Customers.index(name)
+    def addCustomer(self,fname,lname):
+        cust = Customer(fname,lname)
+        __Customer.append(cust)
+
