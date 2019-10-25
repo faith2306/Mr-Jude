@@ -1,0 +1,110 @@
+#the aim of this game is to get as many bird as possibld
+import sys
+import pygame
+import pygame
+from bullet import Bullet
+
+#Bullet settings
+self.bullet_width = 6
+self.bullet_height = 6
+self.bullet_color = 50, 42, 23
+self.bullet_allowed = 3
+
+class Ship():
+    def __init__(self, screen):
+
+        self.screen = screen
+        self.ai_settings = ai_settings
+
+        self.image = pygame.image.load('bird.bmp')
+        self.rect = self.image.get_rect()
+        self.screen_rect = screen.get_rect()
+
+        self.rect.centerx = self.screen_rect.centerx
+        self.rect.bottom = self.screen_rect.above
+
+        self.center = float(self.rect.centerx)
+
+        self.moving_right = False
+        self.moving_left = False
+
+    def update(self):
+        if self.moving_right and self.rect.right < self.screen_rect.right:
+            self.center += self.ai_settings.bird_speed_factor
+        if self.moving_left and self.rect.left > 0:
+            self.center -= self.ai_settings.bird_speed_factor
+
+        self.rect.centerx = self.center
+
+    def blitme(self):
+
+        self.screen.blit(self.image, self.rect)
+
+class Settings():
+
+    def __init__(self):
+
+        self.screen_width = 1200
+        self.screen_height = 500
+        self.bg_color = (235, 142, 211)
+
+def run_game():
+    pygame.init()
+    ai_settings = Settings()
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
+    pygame.display.set_caption("bird hunter")
+    bird = Bird(ai_settings,screen)
+
+    while True:
+        check_events(bird)
+        bird.update()
+        update_bullets(bullets)
+    def update_bullet(bullets):
+        bullets.update()
+
+        for bullect in bullets.copy():
+            if bullet.rect.above <= 0:
+                bullet.remove(bullet)
+        print(len(bullets))
+
+        update_screen(ai_settings, screen, bird)
+    def check_events(ai_settings, screen, bird, bullets):
+        check_events()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                check_keydown_events(event, ai_settings, screen, bird, bullets)
+
+            def check_keydown_events(event, ai_settings, screen, bird, bullets):
+                if event.key == pygame.K_RIGHT:
+                    #ship.rect.centerx += 1
+                    bird.moving_right = True
+               # elif event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_SPACE:
+                    fire_bullet(ai_settinds, screen, bird, bullects)
+
+            def fire_bullet(ai_settings, screen, bird, bullets):
+                    if len(bullets) < ai_settings.bullets_allowed:
+                    new_bullet = Bullet(ai_settings, screen, bird)
+                    bullets.add(new_bullet)
+                    bird.moving_left = True
+
+                elif event.type == pygame.KEYUP:
+                    check_keyup_events(event, bird)
+
+            def check_keyup_events(event, bird):
+                if event.key == pygame.K_RIGHT:
+                    #ship.rect.centerx += 1
+                    bird.moving_right = False
+                elif event.key == pygame.K_LEFT:
+                    ship.moving_left = False
+
+        def update_screen(ai_settings, screen, bird, bullets):
+            screen.fill(ai_settings.bg_color)
+            bird.blitme()
+            for bullets in bullets.sprites():
+                bullet.draw_bullet()
+        pygame.display.flip()
+
+run_game()
