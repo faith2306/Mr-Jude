@@ -1,0 +1,80 @@
+import sys
+from random import randint as ran
+from Qproject import questions, answers, clue
+
+storage = open("storing.txt","a+")
+
+print("Are you feeling lucky today well let`s cheeck")
+username = input("enter nickname:")
+storage.write(username)
+storage.write("\t")
+print("oh welcome dear " + username)
+print("\n ********INTRUCTIONS******** \n"
+      "~ when the game starts choose a Question number(1 - 15) and"
+      " type/spell out the answer`s on your keyboard \n"
+      "~ you have 5 Questions in total")
+
+
+class game_basics():
+    def __init__(self):
+
+
+        question = 5
+
+#the game basics
+        def maingame():
+            score = 0
+            questionCount = 5
+            questionsPicked = []
+            end_game = False
+            cluecount = 0
+
+            while questionCount != 0:
+                rawchoice = input('choose a Question number\n:')
+                # converting the users input to march question name e.g 12 to Q12
+                choice = 'Q' + str(rawchoice)
+
+                #To make sure the program don`t break if the userinput is not in set of questions
+                if choice in questions and choice not in questionsPicked:
+                    print(questions[choice])
+                    print("You Have " + str(questionCount - 1) + " Questions left To Answer")
+                    questionCount -= 1
+                    user_answer = input('type out your Answer \n:')
+                    #to check correct answer
+                    if user_answer == answers[choice]:
+                        print('You Are Correct..............!!')
+                        score+=20
+                    elif user_answer != answers[choice]:
+                        print('Wrong Answer!!!')
+                        score+=0
+                        #To give/print clues
+                        while cluecount !=2 and end_game ==False:
+                            print('To quit and move to next question press "X"\n')
+                            print("Quite tricky right, yah I know! here is a riddle as a clue :> " + clue[choice])
+                            cluecount += 1
+                            user_answer = input('type out your Answer \n:')
+                            #To loop out if you get fustrated with the clues
+                            if user_answer == "X" or "x":
+                                end_game = True
+                            elif user_answer == answers[choice]:
+                                print('You Are Correct..............!!')
+                                score+=5
+                            #To check wrong answers
+                            elif user_answer != answers[choice]:
+                                print('Wrong Answer!!!')
+                                score += 0
+
+
+
+                else:
+                        print('this question is not avalible now choose another')
+                questionsPicked.append(choice)
+# GET SCORE FUNCTION
+            print("your  total score is ", score)
+            storage.write(str(score))
+            storage.write("\n")
+            storage.close()
+
+        maingame()
+
+game_basics()
