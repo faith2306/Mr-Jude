@@ -1,3 +1,63 @@
+questions = []
+questions = {'Q1': 'what do pipo like the most["pink", "green", "purple", "yellow"]',
+             'Q2': 'what do pipo eat the most["steaks", "vegies buggers", "ham buggers", "hotdogs"]',
+             'Q3': 'what do pipo do the most["sleep", "excesise", "eat", "shopping"]',
+             'Q4': 'what do pipo ware the most["skirt", "gown shirt", "dinner gown", "trouser"]',
+             'Q5': 'what do pipo ware the most on foot["sneckers", "trainers", "sandals", "heels"]',
+             'Q6': 'what do pipo attend the most["mall", "supermarket", "gym", "cinema"]',
+             'Q7': 'what do pipo sleep the most["church", "class", "parent\'s place", "friend\'s place"]',
+             'Q8': 'what do pipo browse the most["celebity", "fittness", "cook recipe", "fashion trends"]',
+             'Q9': 'what do pipo be the most["BI", "CS", "FD", "any"]',
+             'Q10': 'what do pipo love the most["girlfriends", "parents", "boyfriends", "none"]',
+             'Q11': 'what do pipo seat the most["leg left_crossed", "legs down", "leg right_crossed", "all"]',
+             'Q12': 'what do pipo drink the most["shakes", "coffee", "water", "soda"]',
+             'Q13': 'what do pipo IDE the most["pycharm", "anaconda", "vs cord", "spider"]',
+             'Q14': 'what do pipo site the most["dark", "light", "dim", "bright"]',
+             'Q15': 'what do pipo uese ["hp", "apple", "asus", linx'}
+
+answers = []
+answers = {'Q1': "green",
+             'Q2': "vegies buggers",
+             'Q3': "eat",
+             'Q4': "dinner gown",
+             'Q5':  "trainers",
+             'Q6': "cinema",
+             'Q7': "temple",
+             'Q8': "cook recipe",
+             'Q9': "any",
+             'Q10': "parents",
+             'Q11': "all",
+             'Q12': "soda",
+             'Q13': "spider",
+             'Q14': "dim",
+             'Q15': "asus",}
+
+
+clue = []
+clue = {'Q1': "Nature",
+             'Q2': "vegetarian",
+             'Q3': "calories don`t really matter  ",
+             'Q4': "princess look",
+             'Q5': "all purpose boots",
+             'Q6': "a dark room",
+             'Q7': "your roots",
+             'Q8': "curlnary",
+             'Q9': "passion",
+             'Q10': "rooted",
+             'Q11': "personality",
+             'Q12': "they are so refreshing",
+             'Q13': "crawer with legs",
+             'Q15': "sun burns my skin",
+             'Q14': "we make games too",}
+#the file above is surppose to to be in another folder
+
+
+
+
+
+
+
+
 import sys
 from random import randint as ran
 from Qproject import questions, answers, clue
