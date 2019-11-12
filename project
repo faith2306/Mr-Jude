@@ -61,6 +61,7 @@ clue = {'Q1': "Nature",
 import sys
 from random import randint as ran
 from Qproject import questions, answers, clue
+import matplotlib.pyplot as plt
 
 storage = open("storing.txt","a+")
 
@@ -97,32 +98,34 @@ class game_basics():
                 #To make sure the program don`t break if the userinput is not in set of questions
                 if choice in questions and choice not in questionsPicked:
                     print(questions[choice])
-                    print("You Have " + str(questionCount - 1) + " Questions left To Answer")
+
                     questionCount -= 1
                     user_answer = input('type out your Answer \n:')
                     #to check correct answer
                     if user_answer == answers[choice]:
                         print('You Are Correct..............!!')
+                        print("You Have " + str(questionCount - 1) + " Questions left To Answer")
                         score+=20
                     elif user_answer != answers[choice]:
                         print('Wrong Answer!!!')
                         score+=0
                         #To give/print clues
-                        while cluecount !=2 and end_game ==False:
-                            print('To quit and move to next question press "X"\n')
-                            print("Quite tricky right, yah I know! here is a riddle as a clue :> " + clue[choice])
-                            cluecount += 1
-                            user_answer = input('type out your Answer \n:')
+                        
+                        cluecount != 2 and end_game == False
+                        print('To quit and move to next question press "X"\n')
+                        print("Quite tricky right, yah I know! here is a riddle as a clue :> " + clue[choice])
+                        cluecount += 1
+                        user_answer = input('type out your Answer \n:')
                             #To loop out if you get fustrated with the clues
-                            if user_answer == "X" or "x":
-                                end_game = True
-                            elif user_answer == answers[choice]:
-                                print('You Are Correct..............!!')
-                                score+=5
+                        if user_answer == "X" or "x":
+                            end_game = True
+                        elif user_answer == answers[choice]:
+                            print('You Are Correct..............!!')
+                            score+=5
                             #To check wrong answers
-                            elif user_answer != answers[choice]:
-                                print('Wrong Answer!!!')
-                                score += 0
+                        elif user_answer != answers[choice]:
+                            print('Wrong Answer!!!')
+                            score += 0
 
 
 
@@ -131,6 +134,22 @@ class game_basics():
                 questionsPicked.append(choice)
 # GET SCORE FUNCTION
             print("your  total score is ", score)
+            if score >= 50:
+                print('guess u are quiet lucky today')
+            elif score <= 49:
+                print("ooops you might get lucky if you play again")
+            #to plot a graph of answers
+
+            ax = plt.subplot(111)
+
+            us = ([2, 4, 6, 8])
+            line, = plt.plot(us, score, lw=2)
+            plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+                        arrowprops=dict(facecolor='black', shrink=1),
+                        )
+            plt.ylim(1, 5)
+            plt.show()
+
             storage.write(str(score))
             storage.write("\n")
             storage.close()
